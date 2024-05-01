@@ -90,7 +90,7 @@ def manage_grid(grid_levels, order_amount, open_orders):
         sell_orders = [o for o in open_orders if o['side'] == 'sell' and o['price'] == sell_price]
         if not sell_orders:
             try:
-                sell_order = exchange.create_limit_sell_order(pair,(order_amount-(0.0001*order_amount)), sell_price)
+                sell_order = exchange.create_limit_sell_order(pair,(order_amount-(0.001*order_amount)), sell_price)
                 logging.info(f"Created new sell order at {sell_price}: {sell_order}")
             except Exception as e:
                 logging.error(f"Error creating sell order at {sell_price}: {e}")
