@@ -3,17 +3,22 @@ import time
 import logging
 import os  # For environment variables
 import argparse  # For command-line arguments
+import dotenv
+
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Initialize the exchange with environment variables for API keys
 
-api_key = os.getenv("di")
-api_secret = os.getenv("secret")
+# api_key = os.getenv("di")
+# api_secret = os.getenv("secret")
+dotenv.load_dotenv()
+id = os.getenv("id")
+secret = os.getenv("secret" )
 exchange = ccxt.phemex({
-    'apiKey': api_key,
-    'secret': api_secret,
+    'apiKey': id,
+    'secret': secret,
     'timeout': 30000,
     'enableRateLimit': True,
 })
